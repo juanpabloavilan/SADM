@@ -15,8 +15,9 @@ public class InterfazApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        // TODO code application logic here    
     int hola;
+        System.out.println("holaa");
     }
     
 }
