@@ -18,6 +18,8 @@ public class InterfazApp {
         // TODO code application logic here    
     int hola;
         System.out.println("holaa");
+    String adios = "adios";
+        System.out.println(adios);
     }
     
 }
