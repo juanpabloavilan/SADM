@@ -20,6 +20,10 @@ public class InterfazApp {
         System.out.println("holaa");
     String adios = "adios";
         System.out.println(adios);
+    int i;
+        for (int m = 0; m < 10; m++) {
+            adios+="adios"+(m+1);
+        }
     }
     
 }
