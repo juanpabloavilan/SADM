@@ -5,25 +5,29 @@
  */
 package interfaz;
 
+import java.util.Arrays;
+
 /**
  *
  * @author AVILAN MORENO
  */
 public class InterfazApp {
+    public String r_placa(){
+        String r_placa = "" +(char) randomNumber(65, 90) + (char) randomNumber(65, 90)+ (char) randomNumber(65, 90)+ (char) randomNumber(48, 57) +(char) randomNumber(48, 57)+  (char) randomNumber(48, 57);
+        return r_placa;
+    }
+    
+    private int randomNumber(int hi, int lo){
+        return (int) (Math.random()*(hi-lo) + lo);
+    }
+    
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here    
-    int hola;
-        System.out.println("holaa");
-    String adios = "adios";
-        System.out.println(adios);
-    int i;
-        for (int m = 0; m < 10; m++) {
-            adios+="adios"+(m+1);
-        }
-    }
+        InterfazApp i = new InterfazApp();
+        System.out.println(i.r_placa());
     
+    }  
 }
