@@ -17,13 +17,13 @@ public class Propietario {
     final private long telefono;
     final private String correo;
     
-    public Propietario(long cedula, String nombres, String apellidos, String direccion, long telefono, String correo){
+    public Propietario(long cedula, String nombres, String apellidos, String direccion, long telefono){
         this.cedula = cedula;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.correo = correo;
+        this.correo = nombres + apellidos + "@gmail.com";
     }
 
     public long getCedula() {
