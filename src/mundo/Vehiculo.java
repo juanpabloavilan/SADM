@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package mundo;
+import util.*;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Vehiculo implements Comparable<Vehiculo> {
     private String servicio;
     private Propietario propietario;
     private Soat soat;
+    private QueueLL<Multa> multas;
     //arraylist
 
     public Vehiculo(String placa, String marca, float cilindraje, String color, String servicio, Propietario propietario, Soat soat) {
@@ -28,7 +30,18 @@ public class Vehiculo implements Comparable<Vehiculo> {
         this.servicio = servicio;
         this.propietario = propietario;
         this.soat = soat;
+        this.multas = new QueueLL();
+        
     }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public QueueLL<Multa> getMultas() {
+        return multas;
+    }
+    
 
     @Override
     public int compareTo(Vehiculo o) {

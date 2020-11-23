@@ -16,7 +16,7 @@ public class Multa {
     protected double valor;
     protected EstampaTiempo fecha;
 
-    public Multa(String codigo, String tipo, EstampaTiempo fecha) {
+    public Multa( String tipo, EstampaTiempo fecha) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.tipo = tipo;
