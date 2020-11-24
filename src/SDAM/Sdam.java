@@ -32,6 +32,7 @@ public class Sdam {
     private QueueLL<Multa> listaMultas;
 
     public Sdam(int numVehiculos, EstampaTiempo tiempo) throws FileNotFoundException {
+        listaMultas = new QueueLL<>();
         this.Marcas = new Scanner(new File("D:\\AVILAN MORENO\\Downloads\\MARCAS.txt"));
         this.Nombres = new Scanner(new File("D:\\AVILAN MORENO\\Downloads\\nombres.txt"));
         this.Apellidos = new Scanner(new File("D:\\AVILAN MORENO\\Downloads\\APELLIDOS.txt"));
@@ -43,6 +44,7 @@ public class Sdam {
         this.faker = new Faker(Marcas, Nombres, Apellidos, Servicio, Colores, Aseguradoras, tiempo);
         for (int i = 0; i < numVehiculos; i++) {
             Vehiculo vehiculo = faker.crearVehiculo();
+            System.out.println("sali");
             bst.put(vehiculo.getPlaca(), vehiculo);
         }
 

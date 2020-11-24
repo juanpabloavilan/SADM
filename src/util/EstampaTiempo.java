@@ -72,25 +72,26 @@ public class EstampaTiempo {
     public LocalTime getTime(){
         return hora;
     }
-
-    public boolean isFuturo() {
-        if (fecha.compareTo(LocalDate.now()) == 1) {
-            return true;
-        } else if (fecha.compareTo(LocalDate.now()) == 0 && hora.compareTo(LocalTime.now()) == 1) {
-            return true;
-        }
-        return false;
+    public LocalDate getDate(){
+        return fecha;
     }
+
+   
 
     public boolean less(LocalTime otra){
         return this.hora.compareTo(otra) <= 0;
+    }
+    
+    public boolean lessOrEqual(LocalDate otra){
+        return this.fecha.compareTo(otra) <= 0;
     }
     
     
 
     @Override
     public String toString() {
-        String formato = "EEEE, dd/MM/yyyy HH:mm:ss";
-        return fecha.format(DateTimeFormatter.ofPattern(formato, Locale.forLanguageTag("es-ES")));
+        return " " + fecha.toString() + hora.toString();
     }
+
+    
 }

@@ -20,8 +20,11 @@ public class Soat {
     public Soat(EstampaTiempo fecha_inicio, String aseguradora) {
      
         this.fecha_inicio = fecha_inicio;
+        System.out.println("f");
         this.fecha_vencimiento = new EstampaTiempo(this.fecha_inicio.getYear()+1, this.fecha_inicio.getMonth(), this.fecha_inicio.getDay(), this.fecha_inicio.getHour(), this.fecha_inicio.getMinute());
+        System.out.println("vencimiento");
         this.aseguradora = aseguradora;
+        System.out.println("aseguradora");
     }
 
     
