@@ -76,16 +76,19 @@ public class Faker {
 
     public Vehiculo crearVehiculo() {
         Vehiculo vehiculo = new Vehiculo(this.placa(), this.marca(), this.cilindrada(), this.color(), this.servicio(), crearPropietario(), crearSoat());
+        System.out.println("vehiculo");
         return vehiculo;
     }
 
     public Propietario crearPropietario() {
         Propietario propietario = new Propietario(this.cedula(), this.nombre(), this.apellido(), this.direccion(), this.telefono());
+        System.out.println("propietario");
         return propietario;
     }
 
     public Soat crearSoat() {
         Soat soat = new Soat(fecha_inicio(), aseguradora());
+        System.out.println("soat");
         return soat;
     }
 
@@ -94,7 +97,7 @@ public class Faker {
         EstampaTiempo fechaInicio;
         do {
             fechaInicio = new EstampaTiempo(randomNumber(2000, fechaActual.getYear()), randomNumber(1, 12), randomNumber(1, 28), randomNumber(0, 23), randomNumber(0, 59));
-        } while (!fechaInicio.isFuturo());
+        } while (!fechaInicio.lessOrEqual(fechaActual.getDate()));
         return fechaInicio;
     }
 
@@ -104,22 +107,28 @@ public class Faker {
 
     public String placa() {
         String r_placa = "" + (char) randomNumber(65, 90) + (char) randomNumber(65, 90) + (char) randomNumber(65, 90) + (char) randomNumber(48, 57) + (char) randomNumber(48, 57) + (char) randomNumber(48, 57);
+        System.out.println("placa");
         return r_placa;
     }
 
     private String marca() {
+        System.out.println("marca");
         return listaMarcas.get(randomNumber(0, listaMarcas.size() - 1));
+        
     }
 
     private String nombre() {
+        System.out.println("nombre");
         return listaNombres.get(randomNumber(0, listaNombres.size() - 1));
     }
 
     private String apellido() {
+        System.out.println("apellido");
         return listaApellidos.get(randomNumber(0, listaApellidos.size() - 1));
     }
 
     private String direccion() {
+        System.out.println("direccion");
         String direccion = "Carrera " + randomNumber(1, 255) + (char) randomNumber(97, 118) + "Calle " + randomNumber(1, 255);
         return direccion;
     }
@@ -127,6 +136,7 @@ public class Faker {
     private long telefono() {
         long telefono;
         telefono = (long) (Math.random() * 10000000 + 1);
+        System.out.println("telefono");
         return telefono;
     }
 
