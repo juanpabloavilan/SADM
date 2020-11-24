@@ -10,7 +10,7 @@ import util.*;
  *
  * @author AVILAN MORENO
  */
-public class Vehiculo implements Comparable<Vehiculo> {
+public class Vehiculo implements Comparable<String> {
 
     private String placa;
     private String marca;
@@ -43,9 +43,27 @@ public class Vehiculo implements Comparable<Vehiculo> {
     }
     
 
+    
     @Override
-    public int compareTo(Vehiculo o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int compareTo(String placa2) {
+         int minimo = this.placa.length();
+        if (placa2.length()<this.placa.length()) {
+            minimo = placa2.length();
+        }
+        for (int i = 0; i < minimo; i++) {
+            if (this.placa.charAt(i) > placa2.charAt(i)) {
+                return 1;
+            } else if (this.placa.charAt(i) < placa2.charAt(i)) {
+                return -1;
+            }
+        }
+        if (this.placa.length()==placa2.length()) {
+            return 0;
+        }
+        if (minimo == placa2.length()) {
+            return 1;
+        }
+        return -1;
     }
 
 }

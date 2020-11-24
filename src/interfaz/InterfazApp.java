@@ -6,16 +6,17 @@
 package interfaz;
 
 import java.util.Arrays;
+import SDAM.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 /**
  *
  * @author AVILAN MORENO
  */
 public class InterfazApp {
-    public String r_placa(){
-        String r_placa = "" +(char) randomNumber(65, 90) + (char) randomNumber(65, 90)+ (char) randomNumber(65, 90)+ (char) randomNumber(48, 57) +(char) randomNumber(48, 57)+  (char) randomNumber(48, 57);
-        return r_placa;
-    }
+   
     
     private int randomNumber(int hi, int lo){
         return (int) (Math.random()*(hi-lo) + lo);
@@ -25,9 +26,20 @@ public class InterfazApp {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+        //Sdam new1 = new Sdam();
         InterfazApp i = new InterfazApp();
-        System.out.println(i.r_placa());
-    
+        String fname =args[0]; 
+        boolean k = false;
+        Scanner in = new Scanner(System.in);
+        File f = new File(fname); 
+  
+        Scanner nombres = new Scanner(new File("C:\\Users\\giova\\Downloads\\SDAM_VEHICULO\\nombres.txt"));
+        Scanner apellidos = new Scanner(new File("C:\\Users\\giova\\Downloads\\SDAM_VEHICULO\\apellidos.txt"));
+        Scanner marca = new Scanner(new File("C:\\Users\\giova\\Downloads\\SDAM_VEHICULO\\marcas.txt"));
+        
+        
+        
+       
     }  
 }

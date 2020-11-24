@@ -21,7 +21,6 @@ public class Sdam {
    private BST<String, Vehiculo> bst;
    private EstampaTiempo tiempo;
 
-   private Faker fakerR;
    
    public Sdam(int numVehiculos, EstampaTiempo tiempo){
        this.bst = new BST();

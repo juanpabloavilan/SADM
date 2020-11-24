@@ -24,10 +24,8 @@ public class Faker {
     private ArrayList<String> listaApellidos;
     private ArrayList<String> listaServicios;
     private ArrayList<String> listaColores;
-    private ArrayList<String> listaAseguradora;
-    private ArrayList<String> listaCilindrada;
 
-    public Faker(Scanner Marcas, /*Scanner Modelos,*/ Scanner Nombres, Scanner Apellidos, Scanner Servicio, Scanner Colores, Scanner Aseguradoras, Scanner Cilindrada) {
+    public Faker(Scanner Marcas, /*Scanner Modelos,*/ Scanner Nombres, Scanner Apellidos, Scanner Servicio, Scanner Colores, Scanner Aseguradoras) {
         //bajar cada entrada de flujo al ArrayList
         while (Marcas.hasNextLine()) {
             String marca = Marcas.nextLine();
