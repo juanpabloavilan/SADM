@@ -15,51 +15,67 @@ import mundo.*;
  */
 public class Faker {
 
-    private Vehiculo r_Vehiculo;
-    private Propietario r_propietario;
-    private Soat r_soat;
+    
     private ArrayList<String> listaMarcas;
     private ArrayList<String> listaModelos;
     private ArrayList<String> listaNombres;
     private ArrayList<String> listaApellidos;
     private ArrayList<String> listaServicios;
     private ArrayList<String> listaColores;
+    private ArrayList<String> listaAseguradoras;
+    private EstampaTiempo fechaActual;
 
-    public Faker(Scanner Marcas, /*Scanner Modelos,*/ Scanner Nombres, Scanner Apellidos, Scanner Servicio, Scanner Colores, Scanner Aseguradoras) {
+    public Faker(Scanner Marcas, /*Scanner Modelos,*/ Scanner Nombres, Scanner Apellidos, Scanner Servicio, Scanner Colores, Scanner Aseguradoras, EstampaTiempo fechaActual) {
         //bajar cada entrada de flujo al ArrayList
-        while (Marcas.hasNextLine()) {
-            String marca = Marcas.nextLine();
+        listaMarcas = new ArrayList<String>();
+        listaApellidos = new ArrayList<String>();
+        listaNombres = new ArrayList<String>();
+        listaServicios = new ArrayList<String>();
+        listaAseguradoras = new ArrayList<String>();
+        listaColores = new ArrayList<String>();
+        
+        
+        
+        while (Marcas.hasNext()) {            
+            String marca = Marcas.next();
             listaMarcas.add(marca);
         }
-       /* while (Modelos.hasNextLine()) {
+        /* while (Modelos.hasNextLine()) {
             String modelo = Modelos.nextLine();
             listaMarcas.add(modelo);
         }*/
-        while (Nombres.hasNextLine()) {
-            String nombre = Nombres.nextLine();
-            listaMarcas.add(nombre);
+        while (Nombres.hasNext()) {
+            
+            String nombre = Nombres.next();
+            listaNombres.add(nombre);
         }
-        while (Apellidos.hasNextLine()) {
-            String apellido = Apellidos.nextLine();
-            listaMarcas.add(apellido);
+        while (Apellidos.hasNext()) {
+            
+            String apellido = Apellidos.next();
+            listaApellidos.add(apellido);
         }
-        while (Servicio.hasNextLine()) {
-            String servicio = Servicio.nextLine();
-            listaMarcas.add(servicio);
+        while (Servicio.hasNext()) {
+            String servicio = Servicio.next();
+            listaServicios.add(servicio);
         }
-        while (Colores.hasNextLine()) {
-            String color = Colores.nextLine();
-            listaMarcas.add(color);
+        while (Colores.hasNext()) {
+            String color = Colores.next();
+            listaColores.add(color);
         }
-        while (Aseguradoras.hasNextLine()) {
-            String aseguradora = Aseguradoras.nextLine();
-            listaMarcas.add(aseguradora);
+        while (Aseguradoras.hasNext()) {
+            String aseguradora = Aseguradoras.next();
+            listaAseguradoras.add(aseguradora);
         }
+        this.fechaActual = fechaActual;
 
     }
 
+    public Faker(String Marcas, String Nombres, String Apellidos, String Servicio, String Colores, String Aseguradoras, EstampaTiempo tiempo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Vehiculo crearVehiculo() {
-        Vehiculo vehiculo = new Vehiculo(this.placa(), this.marca(), this.cilindrada(), this.color(), this.servicio(), crearPropietario(), r_soat);
+        Vehiculo vehiculo = new Vehiculo(this.placa(), this.marca(), this.cilindrada(), this.color(), this.servicio(), crearPropietario(), crearSoat());
         return vehiculo;
     }
 
@@ -68,7 +84,25 @@ public class Faker {
         return propietario;
     }
 
-    private String placa() {
+    public Soat crearSoat() {
+        Soat soat = new Soat(fecha_inicio(), aseguradora());
+        return soat;
+    }
+
+    private EstampaTiempo fecha_inicio() {
+
+        EstampaTiempo fechaInicio;
+        do {
+            fechaInicio = new EstampaTiempo(randomNumber(2000, fechaActual.getYear()), randomNumber(1, 12), randomNumber(1, 28), randomNumber(0, 23), randomNumber(0, 59));
+        } while (!fechaInicio.isFuturo());
+        return fechaInicio;
+    }
+
+    private String aseguradora() {
+        return listaAseguradoras.get(randomNumber(0, listaAseguradoras.size() - 1));
+    }
+
+    public String placa() {
         String r_placa = "" + (char) randomNumber(65, 90) + (char) randomNumber(65, 90) + (char) randomNumber(65, 90) + (char) randomNumber(48, 57) + (char) randomNumber(48, 57) + (char) randomNumber(48, 57);
         return r_placa;
     }
@@ -129,6 +163,4 @@ public class Faker {
         return resultado;
     }
 
-
-    
 }
