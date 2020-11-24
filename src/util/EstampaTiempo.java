@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package util;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.Locale;
@@ -14,11 +16,30 @@ import java.util.Locale;
  */
 public class EstampaTiempo {
     
-    final private LocalDateTime fecha;
-
-    public EstampaTiempo(int año, int mes, int dia, int hora, int minuto, int segundo) {
-        fecha = LocalDateTime.of(año, mes, dia, hora, minuto, segundo);
+    private LocalDate fecha;
+    private LocalTime hora;
+    
+    public EstampaTiempo(int año, int mes, int dia, int hora,int minuto){
+        this.fecha = LocalDate.of(año, mes, dia);
+        this.hora = LocalTime.of(hora, minuto, 0);
     }
+
+     public EstampaTiempo(int año, int mes, int dia) {
+        if (año == 0 && mes == 0) {
+            fecha = LocalDate.now();
+            return;
+        }
+        fecha = LocalDate.of(año, mes, dia);
+    }
+
+    public EstampaTiempo(int hora,int minuto){
+        if (hora == -1 || minuto == -1) {
+            this.hora = LocalTime.now();
+            return;
+        }
+        this.hora = LocalTime.of(hora,minuto,0);
+    }   
+    
 
     public int getYear() {
         return fecha.getYear();
@@ -37,23 +58,35 @@ public class EstampaTiempo {
     }
 
     public int getHour() {
-        return fecha.getHour();
+        return hora.getHour();
     }
 
     public int getMinute() {
-        return fecha.getMinute();
+        return hora.getMinute();
     }
 
     public int getSecond() {
-        return fecha.getSecond();
+        return hora.getSecond();
+    }
+    
+    public LocalTime getTime(){
+        return hora;
     }
 
     public boolean isFuturo() {
-        if (fecha.compareTo(LocalDateTime.now()) == 1) {
+        if (fecha.compareTo(LocalDate.now()) == 1) {
+            return true;
+        } else if (fecha.compareTo(LocalDate.now()) == 0 && hora.compareTo(LocalTime.now()) == 1) {
             return true;
         }
         return false;
     }
+
+    public boolean less(LocalTime otra){
+        return this.hora.compareTo(otra) <= 0;
+    }
+    
+    
 
     @Override
     public String toString() {

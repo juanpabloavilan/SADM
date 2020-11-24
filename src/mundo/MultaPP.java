@@ -25,4 +25,9 @@ public class MultaPP extends Multa{
 
     }
 
+    @Override
+    public String toString() {
+        return "MultaPP{" + "codigo=" + codigo + ", tipo=" + tipo + ", fecha=" + fecha + '}';
+    }
+
 }

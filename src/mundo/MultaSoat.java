@@ -22,4 +22,9 @@ public class MultaSoat extends Multa {
         this.fecha = fecha;
     }
 
+    @Override
+    public String toString() {
+        return "MultaSoat{" + "codigo=" + codigo + ", tipo=" + tipo + ", valor=" + valor + '}';
+    }
+
 }
