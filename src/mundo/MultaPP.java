@@ -16,12 +16,12 @@ public class MultaPP extends Multa{
     private String tipo;
     private EstampaTiempo fecha;
 
-    public MultaPP(String codigo, String tipo, EstampaTiempo fecha, int año, int mes, int dia, int hora, int minuto, int segundo) {
-        super(codigo, tipo, fecha);
+    public MultaPP( String tipo, EstampaTiempo fecha) {
+        super(tipo, fecha);
         this.tipo = "Multa Pico y Placa";
         this.codigo = "100" + (int) (Math.random() * 1000000 + 1);
-        this.valor = valor;
-        this.fecha = new EstampaTiempo(año, mes, dia, hora, minuto, segundo);
+        this.valor = 438.900;
+        this.fecha =fecha;
 
     }
 
