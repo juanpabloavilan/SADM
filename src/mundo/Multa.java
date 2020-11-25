@@ -57,6 +57,6 @@ public class Multa {
 
     @Override
     public String toString() {
-        return "Multa\n" + " codigo: " + codigo + " \ntipo: " + tipo + " \nvalor: " + valor + " \nfecha: " + fecha + "\n";
+        return "Multa\n" + "codigo: " + codigo + " \ntipo: " + tipo + " \nvalor: " + valor + " \nfecha: " + fecha + "\n";
     }
 }

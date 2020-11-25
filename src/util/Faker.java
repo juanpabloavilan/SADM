@@ -17,7 +17,6 @@ public class Faker {
 
     
     private ArrayList<String> listaMarcas;
-    private ArrayList<String> listaModelos;
     private ArrayList<String> listaNombres;
     private ArrayList<String> listaApellidos;
     private ArrayList<String> listaServicios;
@@ -25,7 +24,7 @@ public class Faker {
     private ArrayList<String> listaAseguradoras;
     private EstampaTiempo fechaActual;
 
-    public Faker(Scanner Marcas, /*Scanner Modelos,*/ Scanner Nombres, Scanner Apellidos, Scanner Servicio, Scanner Colores, Scanner Aseguradoras, EstampaTiempo fechaActual) {
+    public Faker(Scanner Marcas, Scanner Nombres, Scanner Apellidos, Scanner Servicio, Scanner Colores, Scanner Aseguradoras, EstampaTiempo fechaActual) {
         //bajar cada entrada de flujo al ArrayList
         listaMarcas = new ArrayList<String>();
         listaApellidos = new ArrayList<String>();
@@ -40,10 +39,7 @@ public class Faker {
             String marca = Marcas.next();
             listaMarcas.add(marca);
         }
-        /* while (Modelos.hasNextLine()) {
-            String modelo = Modelos.nextLine();
-            listaMarcas.add(modelo);
-        }*/
+        
         while (Nombres.hasNext()) {
             
             String nombre = Nombres.next();
@@ -70,25 +66,19 @@ public class Faker {
 
     }
 
-    public Faker(String Marcas, String Nombres, String Apellidos, String Servicio, String Colores, String Aseguradoras, EstampaTiempo tiempo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     public Vehiculo crearVehiculo() {
-        Vehiculo vehiculo = new Vehiculo(this.placa(), this.marca(), this.cilindrada(), this.color(), this.servicio(), crearPropietario(), crearSoat());
-        System.out.println("vehiculo");
+        Vehiculo vehiculo = new Vehiculo(this.placa(), this.marca(), this.cilindrada(), this.color(), this.servicio(), crearPropietario());
         return vehiculo;
     }
 
     public Propietario crearPropietario() {
         Propietario propietario = new Propietario(this.cedula(), this.nombre(), this.apellido(), this.direccion(), this.telefono());
-        System.out.println("propietario");
         return propietario;
     }
 
-    public Soat crearSoat() {
-        Soat soat = new Soat(fecha_inicio(), aseguradora());
-        System.out.println("soat");
+    public Soat crearSoat(Vehiculo vehiculo) {
+        Soat soat = new Soat(vehiculo, fecha_inicio(), aseguradora());
         return soat;
     }
 
@@ -107,36 +97,30 @@ public class Faker {
 
     public String placa() {
         String r_placa = "" + (char) randomNumber(65, 90) + (char) randomNumber(65, 90) + (char) randomNumber(65, 90) + (char) randomNumber(48, 57) + (char) randomNumber(48, 57) + (char) randomNumber(48, 57);
-        System.out.println("placa");
         return r_placa;
     }
 
     private String marca() {
-        System.out.println("marca");
         return listaMarcas.get(randomNumber(0, listaMarcas.size() - 1));
         
     }
 
     private String nombre() {
-        System.out.println("nombre");
         return listaNombres.get(randomNumber(0, listaNombres.size() - 1));
     }
 
     private String apellido() {
-        System.out.println("apellido");
         return listaApellidos.get(randomNumber(0, listaApellidos.size() - 1));
     }
 
     private String direccion() {
-        System.out.println("direccion");
-        String direccion = "Carrera " + randomNumber(1, 255) + (char) randomNumber(97, 118) + "Calle " + randomNumber(1, 255);
+        String direccion = "Carrera " + randomNumber(1, 255) + " " +(char) randomNumber(97, 118) + "Calle " + randomNumber(1, 255);
         return direccion;
     }
 
     private long telefono() {
         long telefono;
         telefono = (long) (Math.random() * 10000000 + 1);
-        System.out.println("telefono");
         return telefono;
     }
 

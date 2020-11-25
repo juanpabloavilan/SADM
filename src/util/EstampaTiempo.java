@@ -90,7 +90,7 @@ public class EstampaTiempo {
 
     @Override
     public String toString() {
-        return " " + fecha.toString() + hora.toString();
+        return " " + fecha.toString() +" " + hora.toString();
     }
 
     

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package mundo;
+
 import util.*;
 
 /**
@@ -20,18 +21,17 @@ public class Vehiculo implements Comparable<String> {
     private Propietario propietario;
     private Soat soat;
     private QueueLL<Multa> multas;
-    //arraylist
 
-    public Vehiculo(String placa, String marca, float cilindraje, String color, String servicio, Propietario propietario, Soat soat) {
+    public Vehiculo(String placa, String marca, float cilindraje, String color, String servicio, Propietario propietario) {
         this.placa = placa;
         this.marca = marca;
         this.cilindraje = cilindraje;
         this.color = color;
         this.servicio = servicio;
         this.propietario = propietario;
-        this.soat = soat;
+        this.soat = null;
         this.multas = new QueueLL();
-        
+
     }
 
     public String getPlaca() {
@@ -41,19 +41,18 @@ public class Vehiculo implements Comparable<String> {
     public QueueLL<Multa> getMultas() {
         return multas;
     }
-    public Soat getSoat(){
+
+    public Soat getSoat() {
         return this.soat;
     }
-    public void setSoat(Soat soat){
-        this.soat=soat;
-    }
-    
-    
 
-    
+    public void setSoat(Soat soat) {
+        this.soat = soat;
+    }
+
     @Override
     public int compareTo(String placa2) {
-         
+
         for (int i = 0; i < placa2.length(); i++) {
             if (this.placa.charAt(i) > placa2.charAt(i)) {
                 return 1;
@@ -63,10 +62,18 @@ public class Vehiculo implements Comparable<String> {
         }
         return 0;
     }
+    
+    public String imprimirMultas(){
+        String multasLista=""; 
+        for (Multa multa : multas) {
+            multasLista += multa+" \n";
+        }
+        return multasLista;
+    }
 
     @Override
     public String toString() {
-        return "Vehiculo{" + "placa=" + placa + ", marca=" + marca + ", cilindraje=" + cilindraje + ", color=" + color + ", servicio=" + servicio + ", propietario=" + propietario + ", soat=" + soat + ", multas=" + multas + '}';
+        return "INFORMACION DEL VEHICULO" + " \n\nPlaca: " + placa + " \nMarca: " + marca + " \nCilindraje: " + cilindraje + " \nColor:" + color + " \nServicio:" + servicio + " \nPropietario:\n" + propietario + " \nSoat:\n" + soat + " \nMultas:" + imprimirMultas();
     }
 
 }

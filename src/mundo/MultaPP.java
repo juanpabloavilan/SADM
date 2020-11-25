@@ -12,22 +12,18 @@ import util.EstampaTiempo;
  */
 public class MultaPP extends Multa{
 
-    private String codigo;
-    private String tipo;
-    private EstampaTiempo fecha;
-
     public MultaPP( String tipo, EstampaTiempo fecha) {
         super(tipo, fecha);
         this.tipo = "Multa Pico y Placa";
         this.codigo = "100" + (int) (Math.random() * 1000000 + 1);
-        this.valor = 438.900;
+        this.valor = 438900;
         this.fecha =fecha;
 
     }
 
     @Override
     public String toString() {
-        return " codigo:" + codigo + " \ntipo: " + tipo + " \nfecha: " + fecha ;
+        return super.toString();
     }
 
 }

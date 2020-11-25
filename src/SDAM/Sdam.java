@@ -44,7 +44,7 @@ public class Sdam {
         this.faker = new Faker(Marcas, Nombres, Apellidos, Servicio, Colores, Aseguradoras, tiempo);
         for (int i = 0; i < numVehiculos; i++) {
             Vehiculo vehiculo = faker.crearVehiculo();
-            System.out.println("sali");
+            vehiculo.setSoat(faker.crearSoat(vehiculo));
             bst.put(vehiculo.getPlaca(), vehiculo);
         }
 
@@ -76,7 +76,7 @@ public class Sdam {
     public Multa generarMultaSoat(EstampaTiempo tiempo, String placa) {
         Vehiculo vehiculo = consultarVehiculo(placa);
         if(vehiculo != null){
-            boolean soatVencido = !tiempo.less(vehiculo.getSoat().getFecha_vencimiento().getTime());  
+            boolean soatVencido = !tiempo.lessOrEqual(vehiculo.getSoat().getFecha_vencimiento().getDate());  
             if(soatVencido){
                 MultaSoat multaSoat = new MultaSoat(placa, tiempo);
                 vehiculo.getMultas().enqueue(multaSoat);

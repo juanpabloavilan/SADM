@@ -12,22 +12,21 @@ import util.*;
  */
 public class Soat {
 
-  
+    private Vehiculo vehiculoAsegurado;
     private EstampaTiempo fecha_inicio;
     private EstampaTiempo fecha_vencimiento;
     private String aseguradora;
 
-    public Soat(EstampaTiempo fecha_inicio, String aseguradora) {
-     
+    public Soat(Vehiculo V_asegurado,EstampaTiempo fecha_inicio, String aseguradora) {
+        this.vehiculoAsegurado = V_asegurado;
         this.fecha_inicio = fecha_inicio;
-        System.out.println("f");
         this.fecha_vencimiento = new EstampaTiempo(this.fecha_inicio.getYear()+1, this.fecha_inicio.getMonth(), this.fecha_inicio.getDay(), this.fecha_inicio.getHour(), this.fecha_inicio.getMinute());
-        System.out.println("vencimiento");
         this.aseguradora = aseguradora;
-        System.out.println("aseguradora");
     }
 
-    
+    public Vehiculo getVehiculoAsegurado() {
+        return vehiculoAsegurado;
+    }   
 
     public EstampaTiempo getFecha_inicio() {
         return fecha_inicio;
@@ -43,7 +42,7 @@ public class Soat {
 
     @Override
     public String toString() {
-        return "Soat{" + "fecha_inicio=" + fecha_inicio + ", fecha_vencimiento=" + fecha_vencimiento + ", aseguradora=" + aseguradora + '}';
+        return "INFORMACIÓN DEL SOAT " + " \nfecha inicio:" + fecha_inicio + " \nfecha vencimiento:" + fecha_vencimiento + " \naseguradora:" + aseguradora;
     }
 
     
