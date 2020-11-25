@@ -20,16 +20,15 @@ import util.QueueLL;
  */
 public class Sdam {
 
-    private Scanner Marcas; 
-    private Scanner Nombres;
-    private Scanner Apellidos;
-    private Scanner Servicio;
-    private Scanner Colores;
-    private Scanner Aseguradoras;
-    private BST<String, Vehiculo> bst;
-    private EstampaTiempo tiempo;
-    private Faker faker;
-    private QueueLL<Multa> listaMultas;
+    private final Scanner Marcas; 
+    private final Scanner Nombres;
+    private final Scanner Apellidos;
+    private final Scanner Servicio;
+    private final Scanner Colores;
+    private final Scanner Aseguradoras;
+    private final BST<String, Vehiculo> bst;
+    private final Faker faker;
+    private final QueueLL<Multa> listaMultas;
 
     public Sdam(int numVehiculos, EstampaTiempo tiempo) throws FileNotFoundException {
         listaMultas = new QueueLL<>();
@@ -40,7 +39,6 @@ public class Sdam {
         this.Colores = new Scanner(new File("D:\\AVILAN MORENO\\Downloads\\colores.txt"));
         this.Aseguradoras = new Scanner(new File("D:\\AVILAN MORENO\\Downloads\\ASEGURADORAS.txt"));
         this.bst = new BST();
-        this.tiempo = tiempo;
         this.faker = new Faker(Marcas, Nombres, Apellidos, Servicio, Colores, Aseguradoras, tiempo);
         for (int i = 0; i < numVehiculos; i++) {
             Vehiculo vehiculo = faker.crearVehiculo();
@@ -109,7 +107,12 @@ public class Sdam {
     public BST getBST(){
         return bst;
     }
-
+    
+    public void imprimirAcumuladoMultas(){
+        for (Multa multa : listaMultas) {
+            System.out.println(multa);
+        }
+    } 
     
 
 }

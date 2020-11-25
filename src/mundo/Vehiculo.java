@@ -73,7 +73,7 @@ public class Vehiculo implements Comparable<String> {
 
     @Override
     public String toString() {
-        return "INFORMACION DEL VEHICULO" + " \n\nPlaca: " + placa + " \nMarca: " + marca + " \nCilindraje: " + cilindraje + " \nColor:" + color + " \nServicio:" + servicio + " \nPropietario:\n" + propietario + " \nSoat:\n" + soat + " \nMultas:" + imprimirMultas();
+        return "INFORMACION DEL VEHICULO" + " \n\nPlaca: " + placa + " \nMarca: " + marca + " \nCilindraje: " + cilindraje + " \nColor:" + color + " \nServicio:" + servicio + " \n\nPropietario:\n" + propietario + " \n\nSoat:\n" + soat + " \n\nMultas:" + imprimirMultas();
     }
 
 }

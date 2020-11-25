@@ -20,7 +20,7 @@ import util.QueueLL;
  * @author AVILAN MORENO
  */
 public class InterfazApp {
-    
+
     public static int randomNumber(int hi, int lo) {
         return (int) (Math.random() * (hi - lo) + lo);
     }
@@ -45,53 +45,54 @@ public class InterfazApp {
         int hora = in.nextInt();
         System.out.print("Minuto: ");
         int minuto = in.nextInt();
-        
 
         tiempo = new EstampaTiempo(año, mes, dia, hora, minuto);
         Sistema = new Sdam(nVehiculos, tiempo);
-        ArrayList<String> placas= (ArrayList<String>) Sistema.getBST().keys();
+        ArrayList<String> placas = (ArrayList<String>) Sistema.getBST().keys();
         while (true) {
             System.out.println("**********************************************");
             System.out.println("SISTEMA AUTOMATICO DE DETECCION DE MULTAS");
             System.out.println("  \n1. Generar placa aleatoria"
                     + "  \n2. Imprimir vehiculos (in-order)"
                     + "  \n3. Buscar vehiculo con placa"
+                    + "  \n4. Imprimir multas generadas hoy"
+                    + "  \n5. Salir"
             );
             int op = in.nextInt();
 
             switch (op) {
                 case 1:
-                    
-                    String placa = placas.get(randomNumber(0, placas.size()-1));
+
+                    String placa = placas.get(randomNumber(0, placas.size() - 1));
                     Vehiculo vehiculo = (Vehiculo) Sistema.getBST().get(placa);
                     System.out.print("Placa: " + placa);
                     System.out.println("\nImprimiendo información relacionada: \n");
                     System.out.println(vehiculo);
-                    
+
                     System.out.println("SISTEMA AUTOMATICO DE DETECCION DE MULTAS");
                     System.out.println("  \n1. Generar multas"
                             + "  \n2. Salir");
                     op = in.nextInt();
-                    
-                    switch(op){
-                        case 1: 
+
+                    switch (op) {
+                        case 1:
                             System.out.println("Generando multas.... \n");
                             MultaPP multaPP = (MultaPP) Sistema.generarMultaPP(tiempo, placa);
                             MultaSoat multaSoat = (MultaSoat) Sistema.generarMultaSoat(tiempo, placa);
-                            if ( multaPP != null) {
+                            if (multaPP != null) {
                                 System.out.println(multaPP);
-                            }else{
+                            } else {
                                 System.out.println("No aplica para multa por pico y placa ");
                             }
                             System.out.println("**********************************************");
                             if (multaSoat != null) {
                                 System.out.println(multaSoat);
-                            }else{
+                            } else {
                                 System.out.println("No aplica para multa por Soat ");
                             }
                             System.out.println("**********************************************");
                         default:
-                            break;                        
+                            break;
                     }
                     break;
                 case 2:
@@ -100,7 +101,50 @@ public class InterfazApp {
                     Sistema.getBST().printInOrder();
                     break;
                 case 3:
-                    System.out.println("");
+                    System.out.println("Ingrese la placa del vehiculo: ");
+                    placa = in.next();
+                    vehiculo = (Vehiculo) Sistema.getBST().get(placa);
+                    if (vehiculo == null){
+                        System.out.println("No existe vehiculo con placa: " + placa);
+                        break;
+                    }
+                    System.out.println("SISTEMA AUTOMATICO DE DETECCION DE MULTAS");
+                    System.out.println("  \n1. Generar multas"
+                            + "  \n2. Imprimir lista de multas"
+                            + " \n3. Salir");
+                    op = in.nextInt();
+
+                    switch (op) {
+                        case 1:
+                            System.out.println("Generando multas.... \n");
+                            MultaPP multaPP = (MultaPP) Sistema.generarMultaPP(tiempo, placa);
+                            MultaSoat multaSoat = (MultaSoat) Sistema.generarMultaSoat(tiempo, placa);
+                            if (multaPP != null) {
+                                System.out.println(multaPP);
+                            } else {
+                                System.out.println("No aplica para multa por pico y placa ");
+                            }
+                            System.out.println("**********************************************");
+                            if (multaSoat != null) {
+                                System.out.println(multaSoat);
+                            } else {
+                                System.out.println("No aplica para multa por Soat ");
+                            }
+                            System.out.println("**********************************************");
+                        case 2:
+                            System.out.println(vehiculo.imprimirMultas());
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                    
+                case 4: //Imprimir multas generadas
+                    System.out.println("Imprimiendo acumulado de multas: \n");
+                    Sistema.imprimirAcumuladoMultas();
+                    break;
+                case 5:
+                    System.exit(0);
                     break;
                 default:
             }
