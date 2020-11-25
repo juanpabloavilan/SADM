@@ -92,6 +92,7 @@ public class InterfazApp {
                     }
                     break;
                 case 2:
+                    System.out.println(Sistema.getBST().size());
                     System.out.println("Imprimiendo vehiculos in-order: ");
                     Sistema.getBST().printInOrder();
                     break;

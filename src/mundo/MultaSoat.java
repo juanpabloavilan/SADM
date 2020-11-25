@@ -24,7 +24,7 @@ public class MultaSoat extends Multa {
 
     @Override
     public String toString() {
-        return "MultaSoat{" + "codigo=" + codigo + ", tipo=" + tipo + ", valor=" + valor + '}';
+        return "Multa Soat " + " \ncodigo: " + codigo + " \ntipo: " + tipo + " \nvalor: " + valor;
     }
 
 }

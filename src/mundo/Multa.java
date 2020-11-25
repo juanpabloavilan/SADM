@@ -54,4 +54,9 @@ public class Multa {
     public void setFecha(EstampaTiempo fecha) {
         this.fecha = fecha;
     } 
+
+    @Override
+    public String toString() {
+        return "Multa\n" + " codigo: " + codigo + " \ntipo: " + tipo + " \nvalor: " + valor + " \nfecha: " + fecha + "\n";
+    }
 }

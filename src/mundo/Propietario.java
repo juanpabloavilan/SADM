@@ -52,6 +52,6 @@ public class Propietario {
 
     @Override
     public String toString() {
-        return "Cedula:" + cedula + ", Nombres:" + nombres + ", Apellidos:" + apellidos + ", Direccion:" + direccion + ", Telefono:" + telefono + ", Correo:" + correo;
+        return "PROPIETARIO: \n Cedula: " + cedula + " \nNombres: " + nombres + " \nApellidos: " + apellidos + " \nDireccion: " + direccion + " \nTelefono: " + telefono + " \nCorreo: " + correo;
     }
 }

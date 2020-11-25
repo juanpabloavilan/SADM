@@ -27,7 +27,7 @@ public class MultaPP extends Multa{
 
     @Override
     public String toString() {
-        return "MultaPP{" + "codigo=" + codigo + ", tipo=" + tipo + ", fecha=" + fecha + '}';
+        return " codigo:" + codigo + " \ntipo: " + tipo + " \nfecha: " + fecha ;
     }
 
 }
